@@ -1,0 +1,17 @@
+{
+  "name": "muchbetterevades",
+  "version": "1.0.0",
+  "description": "Better than evades.io or evades2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Taco",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.1",
+    "socket.io": "^4.5.1"
+  }
+}
