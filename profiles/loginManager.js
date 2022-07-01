@@ -39,14 +39,14 @@ class LoginManager {
             return [false, "Account with name already exists."];
         }
         const sh = this.generateSaltHash(password);
-        const profile = new profile({
+        const prof = new profile({
             name: name,
             salt: sh.salt,
             hash: sh.hash,
             points: 0,
             admin: false
         });
-        profile.save((err, _) => {
+        prof.save((err, _) => {
             if (err) {
                 return [false, "Failed to create a account (server error)"];
             }

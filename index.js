@@ -4,6 +4,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 const PlayerHandler = require("./player/handler.js");
 const LoginManager = require("./profiles/loginManager.js");
+const EventHandlerMBE = require("./events/handler");
 
 // Server and socket init
 const app = express();
@@ -17,8 +18,7 @@ server.listen(4000, () => {
 });
 
 // Player handling
-const handler = new PlayerHandler();
-const login = new LoginManager();
+const EventHandler = new EventHandlerMBE(io, new PlayerHandler(), new LoginManager());
 
 // Socket handling
 io.on("connection", (socket) => {
@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
 
     // Should only receive custom events. Not "connect" and "disconnect"
     socket.onAny((event, ...args) => {
-
+        EventHandler.runEvent(event, args);
     });
 
     socket.on("disconnect", () => {
